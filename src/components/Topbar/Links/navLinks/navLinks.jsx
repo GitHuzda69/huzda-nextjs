@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 
 export default function NavLinks(items) {
   const pathName = usePathname();
-  console.log(items);
+  // console.log(items);
   return (
     <Link href={items.items.path} className={`${styles.container} ${pathName === items.items.path && styles.active}`}>
       {items.items.title}

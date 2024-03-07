@@ -5,7 +5,7 @@ import styles from "./Links.module.css";
 import NavLinks from "./navLinks/navLinks";
 
 export default function Links() {
-  const [open, setOpen] =useState(false);
+  const [open, setOpen] = useState(false);
   const links = [
     {
       title: "Home",
@@ -14,6 +14,10 @@ export default function Links() {
     {
       title: "About",
       path: "/about",
+    },
+    {
+      title: "Post",
+      path: "/post",
     },
     {
       title: "Blog",

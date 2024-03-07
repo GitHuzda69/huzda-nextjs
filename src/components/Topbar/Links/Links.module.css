@@ -7,9 +7,10 @@
 .button {
   padding: 15px;
   cursor: pointer;
+  text-align: center;
   font-weight: bold;
+  border-radius: 100px;
 }
-
 
 .mobileMenu, .menuButton {
   display: none;

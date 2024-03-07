@@ -25,7 +25,7 @@ export default function Page() {
       </div>
       </div>
       <div className={styles.imgContainer}>
-    <Image src="/iura.PNG" alt="" fill />
+    <Image src="/iura.PNG" alt="" fill className={styles.heroImg} />
       </div>
     </div>
   );

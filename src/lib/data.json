@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "userId": "1",
+    "title": "Post 1",
+    "author": "UserId 1",
+    "avatar": "/mumet.jpeg",
+    "date": "01.01.24",
+    "img": "/nihahaha.jpeg",
+    "desc": "Nihahaha"
+  },
+  {
+    "id": "2",
+    "userId": "1",
+    "title": "Post 2",
+    "author": "UserId 1",
+    "avatar": "/mumet.jpeg",
+    "date": "02.01.24",
+    "img": "/nilou_2.jpg",
+    "desc": "Selamat Pagi"
+  },
+  {
+    "id": "3",
+    "userId": "1",
+    "title": "Post 3",
+    "author": "UserId 1",
+    "avatar": "/mumet.jpeg",
+    "date": "02.01.24",
+    "img": "/nilou_4.png",
+    "desc": "hhmmm"
+  },
+  {
+    "id": "4",
+    "userId": "2",
+    "title": "Post 4",
+    "author": "UserId 2",
+    "avatar": "/navia.PNG",
+    "date": "01.01.24",
+    "img": "/kebalik.jpeg",
+    "desc": "Hehe"
+  }
+]

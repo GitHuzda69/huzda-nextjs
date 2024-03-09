@@ -1,21 +1,24 @@
-import Image from "next/image"
-import styles from "./postCard.module.css"
-import Link from "next/link"
+import Image from "next/image";
+import styles from "./postCard.module.css";
+import Link from "next/link";
 
-export default function PostCard () {
-    return (
-        <div className={styles.container}> 
-            <div className={styles.top}>
-                <div className={styles.imgContainer}>
-                    <Image src="/nilou_1.png" fill className={styles.img} />
-                </div>
-            </div>
-            <div className={styles.bottom}>
-                <h1 className={styles.title}>Title</h1>
-                <p className={styles.date}>01.01.24</p>
-                <p className={styles.desc}>Lorem ipsum dolor si amet yadf kaskjso asoems masdlk asj iasasmma nsnnsr.  kasdosa i asidjias maA aja d</p>
-                <Link href="/blog/post" className={styles.links} >Read More...</Link>
-            </div>
+export default function PostCard(post) {
+  return (
+    <div className={styles.container}>
+      <div className={styles.top}>
+        <div className={styles.imgContainer}>
+          {/* <Image src="/iura.PNG" alt="" fill className={styles.img} /> */}
+          <Image src={post.post.img} alt="" fill sizes="100vw" className={styles.img} />
         </div>
-    )
+      </div>
+      <div className={styles.bottom}>
+        <h1 className={styles.title}>{post.post.title}</h1>
+        <p className={styles.date}>{post.post.date}</p>
+        <p className={styles.desc}>{post.post.desc}</p>
+        <Link href={`/blog/${post.post.id}`} className={styles.links}>
+          Read More...
+        </Link>
+      </div>
+    </div>
+  );
 }

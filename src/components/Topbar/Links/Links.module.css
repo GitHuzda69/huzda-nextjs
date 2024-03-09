@@ -12,7 +12,8 @@
   border-radius: 100px;
 }
 
-.mobileMenu, .menuButton {
+.mobileMenu,
+.menuButton {
   display: none;
 }
 
@@ -31,9 +32,10 @@
   .mobileMenu {
     position: absolute;
     top: 100px;
+    z-index: 100;
     right: 0;
     width: 50%;
-    height: calc(100% - 100px); 
+    height: calc(100% - 100px);
     background-color: black;
     display: flex;
     flex-direction: column;

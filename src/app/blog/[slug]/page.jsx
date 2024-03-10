@@ -1,6 +1,5 @@
 import Image from "next/image";
 import styles from "./singlePost.module.css";
-import { getPost } from "@/lib/api";
 import PostUser from "@/components/postUser/postUser";
 import { Suspense } from "react";
 
@@ -9,10 +8,17 @@ export const metadata = {
   description: "Post description",
 };
 
+async function getPost(params) {
+  const rest = await fetch(`http://localhost:3000/api/blog/${params}`);
+
+  if (!rest.ok) {
+    throw new Error(err);
+  }
+  return rest.json();
+}
+
 export default async function singlePost({ params, searchParams }) {
   const posts = await getPost(params.slug);
-  const date = posts.createdAt || new Date();
-  console.log(posts);
 
   return (
     <div className={styles.container}>
@@ -27,7 +33,7 @@ export default async function singlePost({ params, searchParams }) {
           </Suspense>
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
-            <span className={styles.detailValue}>{posts.createdAt}Ini masih error</span>
+            <span className={styles.detailValue}>{posts.createdAt}</span>
           </div>
         </div>
         <div className={styles.content}>{posts?.desc}</div>

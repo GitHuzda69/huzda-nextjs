@@ -21,7 +21,6 @@ const login = async (credentials) => {
     }
     return user;
   } catch (err) {
-    console.error(err);
     throw new Error(err);
   }
 };
@@ -48,6 +47,10 @@ export const {
       },
     }),
   ],
+  trustHost: true,
+  pages: {
+    signIn: `/login`,
+  },
   callbacks: {
     async signIn({ user, account, profile }) {
       // console.log(user, account, profile);

@@ -33,22 +33,21 @@ export const gitHubLogout = async () => {
   await signOut();
 };
 
-export const register = async (formData) => {
+export const register = async (previousState, formData) => {
   const { username, displayname, email, password, img, passwordRepeat } = Object.fromEntries(formData);
 
   if (password !== passwordRepeat) {
-    return "Password do not match";
+    return { error: "Password do not match"};
   }
   try {
     connectDb();
     const userCheck = await User.findOne({ username: username });
     const emailCheck = await User.findOne({ email: email });
-    console.log("checked");
     if (userCheck) {
-      return "Username already exist";
+      return { error: "Username already exist"};
     }
     if (emailCheck) {
-      return "Email already exist";
+      return { error: "Email already exist"};
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -62,17 +61,22 @@ export const register = async (formData) => {
       img,
     });
     await newUser.save();
-    console.log("User saved");
+    return {success : true};
   } catch (err) {
-    console.error(err);
-    throw new Error(err);
+      console.error(err);
+    return { error: "Something went wrong"};
   }
 };
 
-export const login = async (formData) => {
+export const login = async (previousState, formData) => {
   const { username, password } = Object.fromEntries(formData);
-  await signIn("credentials", { username, password });
-  if (!signIn) {
-    throw new Error("Login failed");
+  try{
+    await signIn("credentials", { username, password });
+  } catch (err) {
+    console.error(err);
+    if (err.message.includes("CredentialsSignIn")) {
+      return {error : "Invalid username or password" }
+    }
   }
+  return { error: "Something went error"}
 };

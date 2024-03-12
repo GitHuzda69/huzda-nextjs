@@ -1,0 +1,30 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+    max-width: 500px;
+    min-width: 400px;
+  }
+  
+  .form input {
+    padding: 20px;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: black;
+  }
+  
+  .form button {
+    padding: 20px;
+    background-color: black;
+    color: whitesmoke;
+    font-weight: bold;
+    border: none;
+  }
+  
+  .form input::placeholder {
+    color: whitesmoke;
+  }
+  

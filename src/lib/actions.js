@@ -3,27 +3,78 @@ import { revalidatePath } from "next/cache";
 import { Post, User } from "./models";
 import { connectDb } from "./utils";
 import { signIn, signOut } from "./auth";
+import { isRedirectError } from "next/dist/client/components/redirect";
+import {redirect} from "next/navigation"
+
 import bcrypt from "bcrypt";
 
-export const addPost = async (formData) => {
-  const { displayname, title, desc, img } = Object.fromEntries(formData);
+export const addPost = async (previousState,formData) => {
+  const { title, desc, img, userId } = Object.fromEntries(formData);
 
   try {
     connectDb();
     const newPost = new Post({
-      // belum selesai
       title,
       desc,
+      img,
+      userId,
     });
     await newPost.save();
-    console.log(displayname, title, desc, img.name);
     console.log("Post has been saved");
     revalidatePath("/blog");
+    revalidatePath("/admin");
   } catch (err) {
     console.error(err);
     throw new Error(err);
   }
 };
+
+export const deletePost = async (formData) => {
+  const {id} = Object.fromEntries(formData);
+
+  try {
+    connectDb()
+
+    await Post.findByIdAndDelete(id);
+    console.log("Post has beem deleted");
+    revalidatePath("/blog")
+    revalidatePath("/admin");
+  } catch (err){
+    return {error: "Something went wrong"}
+  }
+}
+
+export const addUser = async (previousState, formData) => {
+  const { username, email, password, img } = Object.fromEntries(formData);
+
+  try {
+    connectDb();
+    const newUser = new User({
+      username, email, password, img
+    });
+    await newUser.save();
+    console.log("User has been saved");
+    revalidatePath("/admin");
+  } catch (err) {
+    console.error(err);
+    throw new Error(err);
+  }
+};
+
+export const deleteUser = async (formData) => {
+  const {id} = Object.fromEntries(formData);
+
+  try {
+    connectDb()
+
+    await User.deleteMany({userId: id})
+    await Post.findByIdAndDelete(id);
+    console.log("Post has beem deleted");
+    revalidatePath("/admin")
+  } catch (err){
+    return {error: "Something went wrong"}
+  }
+}
 
 export const gitHubLogin = async () => {
   await signIn("github");
@@ -60,7 +111,7 @@ export const register = async (previousState, formData) => {
       password: hashedPassword,
       img,
     });
-    await newUser.save();
+    await newUser.save(); 
     return {success : true};
   } catch (err) {
       console.error(err);
@@ -70,13 +121,15 @@ export const register = async (previousState, formData) => {
 
 export const login = async (previousState, formData) => {
   const { username, password } = Object.fromEntries(formData);
-  try{
+  try {
     await signIn("credentials", { username, password });
   } catch (err) {
-    console.error(err);
-    if (err.message.includes("CredentialsSignIn")) {
-      return {error : "Invalid username or password" }
-    }
+    if (isRedirectError) {
+      return { error: "Login is failed"}
   }
-  return { error: "Something went error"}
+      if (err.message.includes("CredentialsSignIn")) {
+        return {error : "Invalid username or password" }
+      }
+  }
+  throw err;
 };

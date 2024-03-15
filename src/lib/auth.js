@@ -7,15 +7,14 @@ import bcrypt from "bcrypt";
 import { authConfig } from "./auth.config";
 
 const login = async (credentials) => {
-  console.log(credentials);
   try {
     connectDb();
     const user = await User.findOne({ username: credentials.username });
-
+    
     if (!user) {
       throw new Error(err);
     }
-
+    
     const passwordCheck = await bcrypt.compare(credentials.password, user.password);
     if (!passwordCheck) {
       throw new Error(err);

@@ -10,9 +10,7 @@ export default async function Topbar() {
       <Link href="/" className={stlyes.logo}>
         HZ
       </Link>
-      <div>
         <Links session={session} />
-      </div>
     </div>
   );
 }

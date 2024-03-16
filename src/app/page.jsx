@@ -1,5 +1,8 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import GitHubIcon from '@mui/icons-material/GitHub';
+import GoogleIcon from '@mui/icons-material/Google';
+import FacebookIcon from '@mui/icons-material/Facebook';
 
 export const metadata = {
   title: `HX Dashboard`,
@@ -17,7 +20,9 @@ export default function Home() {
           <div className={styles.button}>Docs</div>
         </div>
         <div className={styles.brands}>
-          <Image src="/vercel.svg" alt="" fill />
+          <GitHubIcon fontSize="large" />
+          <GoogleIcon fontSize="large" />
+          <FacebookIcon fontSize="large" />
         </div>
       </div>
       <div className={styles.imgContainer}>

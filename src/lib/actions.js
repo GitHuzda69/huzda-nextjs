@@ -4,18 +4,20 @@ import { Post, User } from "./models";
 import { connectDb } from "./utils";
 import { signIn, signOut } from "./auth";
 import { isRedirectError } from "next/dist/client/components/redirect";
-import {redirect} from "next/navigation"
+import { redirect } from "next/navigation";
 
 import bcrypt from "bcrypt";
 
-export const addPost = async (previousState,formData) => {
+export const addPost = async (previousState, formData) => {
   const { title, desc, img, userId } = Object.fromEntries(formData);
+  console.log({ title, desc, img, userId });
 
   try {
     connectDb();
     const newPost = new Post({
       title,
       desc,
+      slug: desc,
       img,
       userId,
     });
@@ -30,27 +32,31 @@ export const addPost = async (previousState,formData) => {
 };
 
 export const deletePost = async (formData) => {
-  const {id} = Object.fromEntries(formData);
+  const { id } = Object.fromEntries(formData);
 
   try {
-    connectDb()
+    connectDb();
 
     await Post.findByIdAndDelete(id);
     console.log("Post has beem deleted");
-    revalidatePath("/blog")
+    revalidatePath("/blog");
     revalidatePath("/admin");
-  } catch (err){
-    return {error: "Something went wrong"}
+  } catch (err) {
+    return { error: "Something went wrong" };
   }
-}
+};
 
 export const addUser = async (previousState, formData) => {
-  const { username, email, password, img } = Object.fromEntries(formData);
+  const { username, displayname, email, password, img } = Object.fromEntries(formData);
 
   try {
     connectDb();
     const newUser = new User({
-      username, email, password, img
+      username,
+      displayname,
+      email,
+      password,
+      img,
     });
     await newUser.save();
     console.log("User has been saved");
@@ -62,19 +68,19 @@ export const addUser = async (previousState, formData) => {
 };
 
 export const deleteUser = async (formData) => {
-  const {id} = Object.fromEntries(formData);
+  const { id } = Object.fromEntries(formData);
 
   try {
-    connectDb()
+    connectDb();
 
-    await User.deleteMany({userId: id})
-    await Post.findByIdAndDelete(id);
+    await User.findByIdAndDelete({ userId: id });
+    await Post.deleteMany(id);
     console.log("Post has beem deleted");
-    revalidatePath("/admin")
-  } catch (err){
-    return {error: "Something went wrong"}
+    revalidatePath("/admin");
+  } catch (err) {
+    return { error: "Something went wrong" };
   }
-}
+};
 
 export const gitHubLogin = async () => {
   await signIn("github");
@@ -85,20 +91,21 @@ export const gitHubLogout = async () => {
 };
 
 export const register = async (previousState, formData) => {
-  const { username, displayname, email, password, img, passwordRepeat } = Object.fromEntries(formData);
+  const { username, displayname, email, password, img, passwordRepeat } =
+    Object.fromEntries(formData);
 
   if (password !== passwordRepeat) {
-    return { error: "Password do not match"};
+    return { error: "Password do not match" };
   }
   try {
     connectDb();
     const userCheck = await User.findOne({ username: username });
     const emailCheck = await User.findOne({ email: email });
     if (userCheck) {
-      return { error: "Username already exist"};
+      return { error: "Username already exist" };
     }
     if (emailCheck) {
-      return { error: "Email already exist"};
+      return { error: "Email already exist" };
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -111,25 +118,23 @@ export const register = async (previousState, formData) => {
       password: hashedPassword,
       img,
     });
-    await newUser.save(); 
-    return {success : true};
+    await newUser.save();
+    return { success: true };
   } catch (err) {
-      console.error(err);
-    return { error: "Something went wrong"};
+    console.error(err);
+    return { error: "Something went wrong" };
   }
 };
 
 export const login = async (previousState, formData) => {
   const { username, password } = Object.fromEntries(formData);
-  try {
-    await signIn("credentials", { username, password });
-  } catch (err) {
-    if (isRedirectError) {
-      return { error: "Login is failed"}
+
+  const response = await signIn("credentials", { username, password });
+  console.log(response);
+
+  if (!response?.error) {
+    redirect("/");
   }
-      if (err.message.includes("CredentialsSignIn")) {
-        return {error : "Invalid username or password" }
-      }
-  }
-  throw err;
+
+  return new Error("failed");
 };

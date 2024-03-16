@@ -1,0 +1,66 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+
+.imgContainer {
+  flex: 1;
+  position: relative;
+  height: 400px;
+}
+
+.img {
+  object-fit: contain;
+}
+
+.formContainer {
+  flex: 1;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hidden::-webkit-file-upload-button {
+  display: none;
+  opacity: 0;
+  color: transparent;
+}
+
+.dropbox::-webkit-file-upload-button {
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+  color: white;
+}
+
+.form input,
+.form textarea {
+  padding: 20px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: chocolate;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  color: whitesmoke;
+}
+
+.form button {
+  padding: 20px;
+  background-color: goldenrod;
+  color: whitesmoke;
+  font-weight: bold;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}

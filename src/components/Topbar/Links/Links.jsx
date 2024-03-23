@@ -19,16 +19,16 @@ export default function Links(session) {
       path: "/",
     },
     {
-      title: "About",
-      path: "/about",
-    },
-    {
       title: "Post",
       path: "/post",
     },
     {
       title: "Blog",
       path: "/blog",
+    },
+    {
+      title: "Dashboard",
+      path: "/dashboard",
     },
   ];
 
@@ -41,7 +41,11 @@ export default function Links(session) {
 
         {session.session ? (
           <>
-            {isAdmin ? <NavLinks items={{ title: "Admin", path: "/admin" }} /> : ""}
+            {isAdmin ? (
+              <NavLinks items={{ title: "Admin", path: "/admin" }} />
+            ) : (
+              ""
+            )}
             <form action={gitHubLogout}>
               <button className={styles.button}>Logout</button>
             </form>
@@ -49,11 +53,21 @@ export default function Links(session) {
         ) : (
           <NavLinks items={{ title: "Login", path: "/login" }} />
         )}
-        <button className={styles.darkToggle} onClick={() => setDark((prev) => !prev)}>
-          {dark && dark ? <DarkModeIcon fontSize="medium" /> : <ContrastIcon fontSize="medium" />}
+        <button
+          className={styles.darkToggle}
+          onClick={() => setDark((prev) => !prev)}
+        >
+          {dark && dark ? (
+            <DarkModeIcon fontSize="medium" />
+          ) : (
+            <ContrastIcon fontSize="medium" />
+          )}
         </button>
       </div>
-      <button className={styles.menuButton} onClick={() => setOpen((prev) => !prev)}>
+      <button
+        className={styles.menuButton}
+        onClick={() => setOpen((prev) => !prev)}
+      >
         <MenuOutlinedIcon />
       </button>
       {open && (

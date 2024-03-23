@@ -1,0 +1,29 @@
+.container {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  color: white;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: rgb(20, 20, 20);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.input {
+  background-color: transparent;
+  border: none;
+  color: white;
+}

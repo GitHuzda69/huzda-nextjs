@@ -23,10 +23,11 @@ export const getPost = async (slug) => {
   }
 };
 
-export const getUser = async (id) => {
+export const getUser = async (userId) => {
   try {
     connectDb();
-    const users = await User.findById(id.userId);
+    const users = await User.findById(userId.userId);
+    console.log(users);
     return users;
   } catch (err) {
     console.log(err);

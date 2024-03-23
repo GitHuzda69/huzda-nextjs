@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./singlePost.module.css";
 import PostUser from "@/components/postUser/postUser";
 import { Suspense } from "react";
+import Topbar from "@/components/Topbar/Topbar";
 
 export const metadata = {
   title: `HX Post Pages`,
@@ -21,23 +22,31 @@ export default async function singlePost({ params, searchParams }) {
   const posts = await getPost(params.slug);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.imgContainer}>
-        <Image src={posts?.img} fill alt="" className={styles.img} />
-      </div>
-      <div className={styles.textContainer}>
-        <h1 className={styles.title}>{posts?.title}</h1>
-        <div className={styles.detail}>
-          <Suspense>
-            <PostUser userId={posts?.userId} />
-          </Suspense>
-          <div className={styles.detailText}>
-            <span className={styles.detailTitle}>Published</span>
-            <span className={styles.detailValue}>{posts.createdAt}</span>
-          </div>
+    <>
+      <Topbar />
+      <div className={styles.container}>
+        <div className={styles.imgContainer}>
+          <Image
+            src={posts?.img || "/noavatar.png"}
+            fill
+            alt=""
+            className={styles.img}
+          />
         </div>
-        <div className={styles.content}>{posts?.desc}</div>
+        <div className={styles.textContainer}>
+          <h1 className={styles.title}>{posts?.title}</h1>
+          <div className={styles.detail}>
+            <Suspense>
+              <PostUser userId={posts?.userId} />
+            </Suspense>
+            <div className={styles.detailText}>
+              <span className={styles.detailTitle}>Published</span>
+              <span className={styles.detailValue}>{posts.createdAt}</span>
+            </div>
+          </div>
+          <div className={styles.content}>{posts?.desc}</div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

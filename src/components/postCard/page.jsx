@@ -7,8 +7,13 @@ export default function PostCard(post) {
     <div className={styles.container}>
       <div className={styles.top}>
         <div className={styles.imgContainer}>
-          {/* <Image src="/iura.PNG" alt="" fill className={styles.img} /> */}
-          <Image src={post.post.img} alt="" fill sizes="100vw" className={styles.img} />
+          <Image
+            src={post.post.img || "/noavatar.png"}
+            alt=""
+            fill
+            sizes="100vw"
+            className={styles.img}
+          />
         </div>
       </div>
       <div className={styles.bottom}>

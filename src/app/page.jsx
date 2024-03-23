@@ -20,9 +20,9 @@ export default function Home() {
           <div className={styles.button}>Docs</div>
         </div>
         <div className={styles.brands}>
-          <GitHubIcon fontSize="large" />
-          <GoogleIcon fontSize="large" />
-          <FacebookIcon fontSize="large" />
+          <GitHubIcon style={{ fontSize: 64, margin: '0 20px' }} />
+          <GoogleIcon style={{ fontSize: 64, margin: '0 20px' }} />
+          <FacebookIcon style={{ fontSize: 64, margin: '0 20px' }} />
         </div>
       </div>
       <div className={styles.imgContainer}>

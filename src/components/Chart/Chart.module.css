@@ -1,0 +1,11 @@
+.container {
+    height: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: black;
+}
+
+.title {
+    justify-content: center;
+    align-items: center;
+}

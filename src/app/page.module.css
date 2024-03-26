@@ -48,7 +48,7 @@
 
 .button:last-child {
   color: black;
-  background-color: white;
+  background-color: var(--texts);
 }
 
 .imgContainer {
@@ -63,7 +63,7 @@
 }
 
 .brands {
-  color: white;
+  color: var(--texts);
   position: relative;
   gap: 20px;
 }

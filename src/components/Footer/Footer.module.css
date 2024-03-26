@@ -1,24 +1,23 @@
 .container {
-    display: flex;
-    justify-content: space-between;
-    height: 100px;
-    align-items: center;
-    color:gray;
-
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  align-items: center;
+  color: var(--bgMain);
 }
 
-.logo{
-    font-weight: bold;
+.logo {
+  font-weight: bold;
 }
 
-.text{
-    font-size: 12px;
+.text {
+  font-size: 12px;
 }
 
 @media (max-width: 768px) {
-    .container{
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-    }
+  .container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
 }

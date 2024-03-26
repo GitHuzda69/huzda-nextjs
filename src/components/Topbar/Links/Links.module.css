@@ -23,7 +23,8 @@
 }
 
 .darkToggle {
-  filter: invert(100%);
+  background-color: var(--bgSoft);
+  color: var(--texts);
   border: none;
 }
 

@@ -1,6 +1,8 @@
 import styles from "./Sidebar.module.css";
 import HomeIcon from "@mui/icons-material/Home";
 import FilterIcon from "@mui/icons-material/Filter";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import { MenuLink } from "./menuLink/menuLink";
 
 export function Sidebar() {
@@ -9,22 +11,24 @@ export function Sidebar() {
       title: "",
       list: [
         {
-          title: "Home",
+          title: "",
           path: "/",
+          icon: <HomeIcon fontSize="large" />,
         },
         {
-          title: "Post",
+          title: "",
           path: "/post",
+          icon: <AddToPhotosIcon fontSize="large" />,
         },
         {
           title: "",
-          path: "/Blog",
-          icon: <FilterIcon />,
+          path: "/blog",
+          icon: <FilterIcon fontSize="large" />,
         },
         {
           title: "",
-          path: "/dashboard/transactions",
-          icon: <HomeIcon />,
+          path: "/dashboard",
+          icon: <DashboardIcon fontSize="large" />,
         },
       ],
     },

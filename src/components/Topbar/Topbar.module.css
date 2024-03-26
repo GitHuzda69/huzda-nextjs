@@ -2,7 +2,7 @@
   width: 100%;
   padding-right: 50px;
   padding-left: 50px;
-  background-color: black;
+  background-color: var(--bgSoft);
   height: 100px;
   display: flex;
   align-items: center;

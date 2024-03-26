@@ -9,9 +9,7 @@ export function MenuLink(item) {
   return (
     <Link
       href={item.item.path}
-      className={`${styles.container} ${
-        pathname === item.item.path && styles.active
-      }`}
+      className={`${styles.container} ${pathname === item.item.path}`}
     >
       {item.item.icon}
       {item.item.title}

@@ -3,10 +3,11 @@
 }
 
 .menu {
-  width: 150px;
-  height: 500px;
-  background-color: black;
+  width: 120px;
+  height: auto;
+  background-color: var(--bgSoft);
   padding: 20px;
+  margin-bottom: 20px;
 }
 
 .content {
@@ -29,4 +30,10 @@
   display: flex;
   gap: 20px;
   justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+  }
 }

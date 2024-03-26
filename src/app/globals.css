@@ -1,3 +1,12 @@
+:root {
+  --bg: #0a0a0a;
+  --bgSoft: #1d1e20;
+  --bgMain: #6b6d76;
+  --bgSecond: #b8b8b8;
+  --texts: #ffffff;
+  --textsSoft: #b7bac1;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,8 +14,8 @@
 }
 
 body {
-  background-color: rgb(20, 20, 20);
-  color: white;
+  background-color: var(--bg);
+  color: var(--texts);
 }
 
 a {
@@ -15,7 +24,7 @@ a {
 }
 
 .container {
-  background-color: rgb(20, 20, 20);
+  background-color: var(--bg);
 }
 
 .contentContainer {

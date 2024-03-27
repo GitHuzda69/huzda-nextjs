@@ -1,6 +1,5 @@
 import Image from "next/image";
 import styles from "./Post.module.css";
-import { addPost } from "@/lib/actions";
 import PostForm from "@/components/postForm/postForm";
 import { auth } from "@/lib/auth";
 import Topbar from "@/components/Topbar/Topbar";

@@ -1,5 +1,5 @@
 .container {
-  width: 100%;
+  width: auto;
   padding-right: 50px;
   padding-left: 50px;
   background-color: var(--bgSoft);

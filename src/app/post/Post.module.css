@@ -60,6 +60,46 @@
   border: none;
 }
 
+@media (min-width: 3840px) {
+  .container {
+    margin: 0 30%;
+  }
+}
+
+@media (max-width: 3840px) {
+  .container {
+    margin: 0 20%;
+  }
+}
+
+@media (max-width: 2560px) {
+  .container {
+    margin: 0 10%;
+  }
+}
+
+@media (max-width: 1980px) {
+  .container {
+    margin: 0 5%;
+  }
+}
+
+@media (min-width: 1336px) {
+  .container {
+    width: auto;
+    padding: 3rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  .container {
+    width: auto;
+    padding: 2rem;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     flex-direction: column;

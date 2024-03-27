@@ -20,10 +20,9 @@ export default function Dashboard() {
               <Card />
               <Card />
             </div>
-              <Transaction />
-              <Chart />
-            </div>
-
+            <Transaction />
+            <Chart />
+          </div>
         </div>
       </div>
     </div>

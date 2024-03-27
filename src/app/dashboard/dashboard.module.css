@@ -32,7 +32,46 @@
   justify-content: space-between;
 }
 
+@media (min-width: 3840px) {
+  .container {
+    margin: 0 30%;
+  }
+}
+
+@media (min-width: 3840px) {
+  .container {
+    margin: 0 20%;
+  }
+}
+
+@media (min-width: 2560px) {
+  .container {
+    margin: 0 10%;
+  }
+}
+
+@media (min-width: 1980px) {
+  .container {
+    margin: 0 5%;
+  }
+}
+
+@media (min-width: 1336px) {
+  .container {
+    width: auto;
+  }
+}
+
+@media (max-width: 1280px) {
+  .container {
+    width: auto;
+  }
+}
+
 @media (max-width: 768px) {
+  .container {
+    width: auto;
+  }
   .menu {
     display: none;
   }

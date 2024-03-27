@@ -49,6 +49,51 @@
   font-size: 20px;
 }
 
+@media (min-width: 3840px) {
+  .container {
+    margin: 0 30%;
+  }
+  .imgContainer {
+    height: 720px;
+  }
+}
+
+@media (max-width: 3840px) {
+  .container {
+    margin: 0 20%;
+  }
+  .imgContainer {
+    height: 720px;
+  }
+}
+
+@media (max-width: 2560px) {
+  .container {
+    margin: 0 10%;
+  }
+}
+
+@media (max-width: 1980px) {
+  .container {
+    margin: 0 5%;
+  }
+}
+
+@media (max-width: 1336px) {
+  .container {
+    width: 1280px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .container {
+    width: 1024px;
+    padding: 2rem;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .imgContainer {
     display: none;

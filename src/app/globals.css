@@ -1,10 +1,19 @@
-:root {
+[data-theme="dark"]:root {
   --bg: #0a0a0a;
   --bgSoft: #1d1e20;
   --bgMain: #6b6d76;
   --bgSecond: #b8b8b8;
   --texts: #ffffff;
-  --textsSoft: #b7bac1;
+  --textsSecond: #ffffff;
+}
+
+[data-theme="light"]:root {
+  --bg: #ffffff;
+  --bgSoft: #0a0a0a;
+  --bgMain: #b8b8b8;
+  --bgSecond: #6b6d76;
+  --texts: #ffffff;
+  --textsSecond: #0a0a0a;
 }
 
 * {

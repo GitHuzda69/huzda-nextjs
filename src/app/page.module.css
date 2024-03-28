@@ -17,14 +17,17 @@
 
 .title {
   font-size: 96px;
+  color: var(--textsSecond);
 }
 
 .title2 {
   font-size: 70px;
+  color: var(--textsSecond);
 }
 
 .desc {
   font-size: 20px;
+  color: var(--textsSecond);
 }
 
 .buttons {
@@ -46,9 +49,14 @@
   background-color: #7dc4fc;
 }
 
-.button:last-child {
-  color: black;
-  background-color: var(--texts);
+[data-theme="dark"] .button:last-child {
+  color: var(--bg);
+  background-color: var(--textsSecond);
+}
+
+[data-theme="light"] .button:last-child {
+  color: white;
+  background-color: black;
 }
 
 .imgContainer {

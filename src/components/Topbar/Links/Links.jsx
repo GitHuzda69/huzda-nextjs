@@ -7,11 +7,12 @@ import { gitHubLogout } from "@/lib/actions";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import ContrastIcon from "@mui/icons-material/Contrast";
+import { useTheme } from "next-themes";
 
 export default function Links(session) {
   const isAdmin = true;
   const [open, setOpen] = useState(false);
-  const [dark, setDark] = useState(true);
+  const { theme, setTheme } = useTheme();
 
   const links = [
     {
@@ -55,12 +56,14 @@ export default function Links(session) {
         )}
         <button
           className={styles.darkToggle}
-          onClick={() => setDark((prev) => !prev)}
+          onClick={() => {
+            setTheme(theme === "light" ? "dark" : "light");
+          }}
         >
-          {dark && dark ? (
-            <DarkModeIcon fontSize="medium" />
-          ) : (
+          {theme === "light" ? (
             <ContrastIcon fontSize="medium" />
+          ) : (
+            <DarkModeIcon fontSize="medium" />
           )}
         </button>
       </div>

@@ -23,17 +23,20 @@
 
 .title {
   font-size: 64px;
+  color: var(--textsSecond);
 }
 
 .detail {
   display: flex;
   gap: 20px;
+  color: var(--textsSecond);
 }
 
 .detailText {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  color: var(--textsSecond);
 }
 
 .detailTitle {
@@ -47,6 +50,7 @@
 
 .content {
   font-size: 20px;
+  color: var(--textsSecond);
 }
 
 @media (min-width: 3840px) {

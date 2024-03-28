@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['avatars.githubusercontent.com'],
+    domains: ["avatars.githubusercontent.com"],
   },
   webpack: (config) => {
     config.resolve.fallback = {
@@ -10,6 +10,10 @@ const nextConfig = {
     };
 
     return config;
+  },
+  darkMode: "class",
+  theme: {
+    extends: {},
   },
 };
 

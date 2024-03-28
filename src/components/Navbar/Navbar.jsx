@@ -7,7 +7,7 @@ export function Navbar() {
       <div className={styles.title}>Navbar</div>
       <div className={styles.menu}>
         <div className={styles.search}>
-          <SearchIcon />
+          <SearchIcon className={styles.logo} />
           <input type="text" placeholder="Search..." className={styles.input} />
         </div>
       </div>

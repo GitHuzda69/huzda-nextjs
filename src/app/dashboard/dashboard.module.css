@@ -38,25 +38,32 @@
   }
 }
 
-@media (min-width: 3840px) {
+@media (max-width: 3840px) {
   .container {
     margin: 0 20%;
   }
 }
 
-@media (min-width: 2560px) {
+@media (max-width: 2560px) {
   .container {
     margin: 0 10%;
   }
 }
 
-@media (min-width: 1980px) {
+@media (max-width: 1980px) {
   .container {
     margin: 0 5%;
   }
 }
 
-@media (min-width: 1336px) {
+@media (max-width: 1536px) {
+  .container {
+    margin: 0;
+    width: auto;
+  }
+}
+
+@media (max-width: 1336px) {
   .container {
     width: auto;
   }

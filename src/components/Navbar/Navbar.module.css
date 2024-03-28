@@ -13,6 +13,10 @@
   text-transform: capitalize;
 }
 
+[data-theme="light"] .logo {
+  color: var(--textsSecond);
+}
+
 .search {
   display: flex;
   align-items: center;

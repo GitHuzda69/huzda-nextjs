@@ -4,18 +4,22 @@ import CredentialProvider from "next-auth/providers/credentials";
 import { connectDb } from "./utils";
 import { User } from "./models";
 import bcrypt from "bcrypt";
+import mongoose from "mongoose";
 import { authConfig } from "./auth.config";
 
 const login = async (credentials) => {
   try {
     connectDb();
     const user = await User.findOne({ username: credentials.username });
-    
+
     if (!user) {
       throw new Error(err);
     }
-    
-    const passwordCheck = await bcrypt.compare(credentials.password, user.password);
+
+    const passwordCheck = await bcrypt.compare(
+      credentials.password,
+      user.password
+    );
     if (!passwordCheck) {
       throw new Error(err);
     }
@@ -55,7 +59,7 @@ export const {
   },
   callbacks: {
     async signIn({ user, account, profile }) {
-      // console.log(user, account, profile);
+      console.log(user);
       if (account.provider === "github") {
         connectDb();
         try {

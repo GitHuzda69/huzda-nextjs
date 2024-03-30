@@ -1,19 +1,22 @@
-/** @type {import('next').NextConfig} */
+// next.config.mjs
 const nextConfig = {
   images: {
-    domains: ["avatars.githubusercontent.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+        pathname: "**",
+      },
+    ],
   },
-  webpack: (config) => {
-    config.resolve.fallback = {
-      "mongodb-client-encryption": false,
-      aws4: false,
-    };
-
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        "mongodb-client-encryption": false,
+        aws4: false,
+      };
+    }
     return config;
-  },
-  darkMode: "class",
-  theme: {
-    extends: {},
   },
 };
 

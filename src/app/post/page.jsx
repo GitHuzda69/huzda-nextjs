@@ -17,7 +17,14 @@ export default async function Page() {
       <Topbar />
       <div className={styles.container}>
         <div className={styles.imgContainer}>
-          <Image src="/navia.PNG" fill alt="" className={styles.img} />
+          <Image
+            src="/navia.PNG"
+            fill
+            sizes="100vw 50vw"
+            priority
+            alt=""
+            className={styles.img}
+          />
         </div>
         <div className={styles.formContainer}>
           <PostForm userId={session?.user.id} />

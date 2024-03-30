@@ -1,7 +1,7 @@
 export const authConfig = {
   trustHost: true,
   pages: {
-    signIn: "/",
+    signIn: "/login",
   },
   providers: [],
   callbacks: {
@@ -24,12 +24,17 @@ export const authConfig = {
       const isOnAdminPanel = request.nextUrl?.pathname.startsWith("/admin");
       const isOnLoginPage = request.nextUrl?.pathname.startsWith("/login");
       const isOnBlogPage = request.nextUrl?.pathname.startsWith("/blog");
+      const isOnPostPage = request.nextUrl?.pathname.startsWith("/post");
 
-      // if(isOnAdminPanel && !user?.isAdmin) {
-      //     return false;
-      // }
+      if (isOnAdminPanel && !user?.isAdmin) {
+        return false;
+      }
 
       if (isOnBlogPage && !user) {
+        return false;
+      }
+
+      if (isOnPostPage && !user) {
         return false;
       }
 

@@ -4,6 +4,7 @@ import Topbar from "@/components/Topbar/Topbar";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import Link from "next/link";
 
 export const metadata = {
   title: `HX Dashboard`,
@@ -26,18 +27,38 @@ export default function Home() {
             <div className={styles.button}>Docs</div>
           </div>
           <div className={styles.brands}>
-            <GitHubIcon style={{ fontSize: 64, margin: "0 20px" }} />
-            <GoogleIcon style={{ fontSize: 64, margin: "0 20px" }} />
-            <FacebookIcon style={{ fontSize: 64, margin: "0 20px" }} />
+            <Link href={"https://github.com"}>
+              <GitHubIcon style={{ fontSize: 64, margin: "0 20px" }} />
+            </Link>
+            <Link href={"https://google.com"}>
+              <GoogleIcon style={{ fontSize: 64, margin: "0 20px" }} />
+            </Link>
+            <Link href={"https://facebook.com"}>
+              <FacebookIcon style={{ fontSize: 64, margin: "0 20px" }} />
+            </Link>
           </div>
         </div>
         <div className={styles.imgContainer}>
-          <Image src="/pekora.PNG" alt="" fill className={styles.heroImg} />
+          <Image
+            src="/pekora.PNG"
+            alt=""
+            width={500}
+            height={500}
+            className={styles.heroImg}
+            priority
+          />
         </div>
       </div>
       <div className={styles.container}>
         <div className={styles.imgContainer}>
-          <Image src="/iura.PNG" alt="" fill className={styles.heroImg} />
+          <Image
+            src="/iura.PNG"
+            alt=""
+            width={500}
+            height={500}
+            className={styles.heroImg}
+            priority
+          />
         </div>
         <div className={styles.textContainer}>
           <h1 className={styles.title2}>Start smaller makes world easier</h1>

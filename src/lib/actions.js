@@ -17,7 +17,6 @@ export const addPost = async (previousState, formData) => {
     const newPost = new Post({
       title,
       desc,
-      slug: desc,
       img,
       userId,
     });
@@ -47,7 +46,11 @@ export const deletePost = async (formData) => {
 };
 
 export const addUser = async (previousState, formData) => {
-  const { username, displayname, email, password, img } = Object.fromEntries(formData);
+  const { username, displayname, email, password, img } =
+    Object.fromEntries(formData);
+
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
 
   try {
     connectDb();
@@ -55,7 +58,7 @@ export const addUser = async (previousState, formData) => {
       username,
       displayname,
       email,
-      password,
+      password: hashedPassword,
       img,
     });
     await newUser.save();
@@ -129,12 +132,11 @@ export const register = async (previousState, formData) => {
 export const login = async (previousState, formData) => {
   const { username, password } = Object.fromEntries(formData);
 
-  const response = await signIn("credentials", { username, password });
-  console.log(response);
+  await signIn("credentials", { username, password });
 
-  if (!response?.error) {
+  if (isRedirectError) {
     redirect("/");
   }
 
-  return new Error("failed");
+  throw new Error("failed");
 };

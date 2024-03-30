@@ -11,7 +11,7 @@ export default function PostCard(post) {
             src={post.post.img || "/noavatar.png"}
             alt=""
             fill
-            sizes="100vw"
+            sizes="100vw 50vw"
             className={styles.img}
           />
         </div>

@@ -11,9 +11,10 @@ export default function PostForm(userId) {
     <form action={formAction} className={styles.form}>
       <input type="hidden" name="userId" value={userId.userId} />
       <input type="text" placeholder="Enter Title" name="title" />
-      <button>
+      {/* <button>
         <input type="file" className={styles.hidden} name="img" />
-      </button>
+      </button> */}
+      <input type="text" id="img" name="img" placeholder="Image" />
       <textarea name="desc" id="desc" placeholder="Desc" cols="30" rows="10" />
       <button>Post</button>
       {state && state}

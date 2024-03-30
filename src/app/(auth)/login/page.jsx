@@ -1,7 +1,7 @@
 import Topbar from "@/components/Topbar/Topbar";
 import styles from "./Login.module.css";
 import LoginForm from "@/components/loginForm/loginForm";
-import { gitHubLogin, login } from "@/lib/actions";
+import { gitHubLogin } from "@/lib/actions";
 import { GitHub, Google } from "@mui/icons-material";
 
 export default async function LoginPage() {

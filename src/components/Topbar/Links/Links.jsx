@@ -9,8 +9,7 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import ContrastIcon from "@mui/icons-material/Contrast";
 import { useTheme } from "next-themes";
 
-export default function Links(session) {
-  const isAdmin = true;
+export default async function Links(session) {
   const [open, setOpen] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -42,7 +41,7 @@ export default function Links(session) {
 
         {session.session ? (
           <>
-            {isAdmin ? (
+            {session.session.user.isAdmin === true ? (
               <NavLinks items={{ title: "Admin", path: "/admin" }} />
             ) : (
               ""

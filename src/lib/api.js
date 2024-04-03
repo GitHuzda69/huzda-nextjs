@@ -12,6 +12,21 @@ export const getPosts = async () => {
   }
 };
 
+export const getPostAdmin = async (posts) => {
+  const ITEM_PER_PAGE = 5;
+  try {
+    connectDb();
+    const post = await Post.find()
+      .limit(ITEM_PER_PAGE)
+      .skip(ITEM_PER_PAGE * (posts - 1));
+    const count = await Post.find().count();
+    return { count, post };
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch all post!");
+  }
+};
+
 export const getPost = async (slug) => {
   try {
     connectDb();

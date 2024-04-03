@@ -13,6 +13,7 @@ export default function PostCard(post) {
             fill
             sizes="100vw 50vw"
             className={styles.img}
+            loading="lazy"
           />
         </div>
       </div>
@@ -20,7 +21,10 @@ export default function PostCard(post) {
         <h1 className={styles.title}>{post.post.title}</h1>
         <p className={styles.date}>{post.post.date}</p>
         <p className={styles.desc}>{post.post.desc}</p>
-        <Link href={`/blog/${post.post._id}`} className={styles.links}>
+        <Link
+          href={`/blog/${post.post._id}`}
+          className={styles.links}
+        >
           Read More...
         </Link>
       </div>
